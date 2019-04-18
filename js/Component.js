@@ -2,6 +2,8 @@ export default class Component {
     constructor(element, props = {}) {
         this.element = element;
         this.props = props;
+
+        this.components = {};
     }
 
     setState(newState) {
@@ -15,7 +17,9 @@ export default class Component {
 
     on(eventName, elementName, callback) {
         this.element.addEventListener(eventName, (event) => {
-            const delegateTarget = event.target.closest(`[data-element="${elementName}"]`)
+            const delegateTarget = event.target.closest(
+                `[data-element="${elementName}"]`
+            );
 
             if (!delegateTarget) {
                 return;
@@ -28,11 +32,18 @@ export default class Component {
 
     initComponent(Constructor, props = {}) {
         const componentName = Constructor.name;
-        const element = this.element.querySelector(`[data-component="${Constructor.name}"]`);
+        const element = this.element.querySelector(`[data-component="${componentName}"]`);
 
-        if (element) {
-            new Constructor(element, props);
+        if (!element) {
+            return;
+        }
+
+        const current = this.components[componentName];
+
+        if (!current || !_.isEqual(current.props, props)) {
+            this.components[componentName] = new Constructor(element, props);
+        } else {
+            element.parentNode.replaceChild(current.element, element);
         }
     }
-
 }
