@@ -154,67 +154,67 @@ const phonesFromServer = [
     }
 ];
 const phoneDetails = {
-    "additionalFeatures": "Front Facing 1.3MP Camera",
+    "additionalFeatures": "Access to Sprint ID Service Packs, front and rear facing cameras\n",
     "android": {
-        "os": "Android 2.2",
-        "ui": "Dell Stage"
+        "os": "Android 2.1",
+        "ui": "Stock Android + Sprint ID Pack"
     },
     "availability": [
-        "T-Mobile"
+        "Sprint"
     ],
     "battery": {
-        "standbyTime": "",
-        "talkTime": "",
-        "type": "Lithium Ion (Li-Ion) (2780 mAH)"
+        "standbyTime": "930 hours",
+        "talkTime": "9 hours",
+        "type": "Lithium Ion (Li-Ion) (1500 mAH)"
     },
     "camera": {
         "features": [
             "Flash",
             "Video"
         ],
-        "primary": "5.0 megapixels"
+        "primary": "3.0 megapixels"
     },
     "connectivity": {
         "bluetooth": "Bluetooth 2.1",
-        "cell": "T-mobile HSPA+ @ 2100/1900/AWS/850 MHz",
+        "cell": "800Mhz, 1900MHz",
         "gps": true,
         "infrared": false,
-        "wifi": "802.11 b/g"
+        "wifi": "802.11 b/g/n"
     },
-    "description": "Introducing Dell\u2122 Streak 7. Share photos, videos and movies together. It\u2019s small enough to carry around, big enough to gather around. Android\u2122 2.2-based tablet with over-the-air upgrade capability for future OS releases.  A vibrant 7-inch, multitouch display with full Adobe\u00ae Flash 10.1 pre-installed.  Includes a 1.3 MP front-facing camera for face-to-face chats on popular services such as Qik or Skype.  16 GB of internal storage, plus Wi-Fi, Bluetooth and built-in GPS keeps you in touch with the world around you.  Connect on your terms. Save with 2-year contract or flexibility with prepaid pay-as-you-go plans",
+    "description": "Change your perspective.  The Samsung Transform\u2122 is an Android powered device that delivers the truly customizable experience you want your phone to provide.  Enjoy a new and easy way to personalize your device for business or for entertainment, showcasing your own favorite theme and more through the new open software platform and the ability to download individual \u2018Sprint ID Service Packs\u2019 that combine and deliver multiple content items and applications specifically for the features you want.  Combine this with the 3.5\u201d touch display, QWERTY keyboard, high-speed processor, and both a front and rear facing camera to bring your unique mobile experience to life.",
     "display": {
-        "screenResolution": "WVGA (800 x 480)",
-        "screenSize": "7.0 inches",
+        "screenResolution": "HVGA (480 x 320)",
+        "screenSize": "3.5 inches",
         "touchScreen": true
     },
     "hardware": {
         "accelerometer": true,
         "audioJack": "3.5mm",
-        "cpu": "nVidia Tegra T20",
+        "cpu": "800 MHz",
         "fmRadio": false,
-        "physicalKeyboard": false,
+        "physicalKeyboard": true,
         "usb": "USB 2.0"
     },
-    "id": "dell-streak-7",
+    "id": "samsung-transform",
     "images": [
-        "img/phones/dell-streak-7.0.jpg",
-        "img/phones/dell-streak-7.1.jpg",
-        "img/phones/dell-streak-7.2.jpg",
-        "img/phones/dell-streak-7.3.jpg",
-        "img/phones/dell-streak-7.4.jpg"
+        "img/phones/samsung-transform.0.jpg",
+        "img/phones/samsung-transform.1.jpg",
+        "img/phones/samsung-transform.2.jpg",
+        "img/phones/samsung-transform.3.jpg",
+        "img/phones/samsung-transform.4.jpg"
     ],
-    "name": "Dell Streak 7",
+    "name": "Samsung Transform\u2122",
     "sizeAndWeight": {
         "dimensions": [
-            "199.9 mm (w)",
-            "119.8 mm (h)",
-            "12.4 mm (d)"
+            "61.5 mm (w)",
+            "117.0 mm (h)",
+            "15.3 mm (d)"
         ],
-        "weight": "450.0 grams"
+        "weight": "148.0 grams"
     },
     "storage": {
-        "flash": "16000MB",
-        "ram": "512MB"
+        "flash": "180MB",
+        "ram": "384MB"
     }
 };
 
