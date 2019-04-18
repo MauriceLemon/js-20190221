@@ -20,7 +20,14 @@ export default class PhonesPage extends Component {
 
     init() {
         this.initComponent(Filter);
-        this.initComponent(ShoppingCart, { items: this.state.items });
+        this.initComponent(ShoppingCart, {
+            items: this.state.items,
+            onRemove: (itemToRemove) => {
+                this.setState({
+                    items: this.state.items.filter(item => item !== itemToRemove),
+                });
+            },
+        });
         this.initComponent(PhonesCatalog, {
             phones: this.state.phones,
 
