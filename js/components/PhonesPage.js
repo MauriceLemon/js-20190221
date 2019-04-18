@@ -23,11 +23,19 @@ export default class PhonesPage extends Component {
         this.initComponent(ShoppingCart, { items: this.state.items });
         this.initComponent(PhonesCatalog, {
             phones: this.state.phones,
+
             onPhoneSelected: (phoneId) => {
                 this.setState({
                     selectedPhone: getById(phoneId),
                 });
-            }
+            },
+
+            onAdd: (phoneId) => {
+                this.setState({
+                    items: [...this.state.items, phoneId],
+                });
+            },
+
         });
         this.initComponent(PhoneViewer, {
             phone: this.state.selectedPhone,
@@ -40,7 +48,7 @@ export default class PhonesPage extends Component {
             onAdd: (phoneId) => {
                 this.setState({
                     items: [...this.state.items, phoneId],
-                })
+                });
             },
 
         });
