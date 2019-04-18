@@ -12,6 +12,7 @@ export default class PhonesPage extends Component {
         this.state = {
           phones: getAll(),
           selectedPhone: null,
+          items: [],
         };
 
         this.render();
@@ -19,7 +20,7 @@ export default class PhonesPage extends Component {
 
     init() {
         this.initComponent(Filter);
-        this.initComponent(ShoppingCart);
+        this.initComponent(ShoppingCart, { items: this.state.items });
         this.initComponent(PhonesCatalog, {
             phones: this.state.phones,
             onPhoneSelected: (phoneId) => {
@@ -34,7 +35,14 @@ export default class PhonesPage extends Component {
                 this.setState({
                     selectedPhone: null
                 })
-            }
+            },
+
+            onAdd: (phoneId) => {
+                this.setState({
+                    items: [...this.state.items, phoneId],
+                })
+            },
+
         });
     }
 

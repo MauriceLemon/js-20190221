@@ -1,18 +1,25 @@
-export default class ShoppingCart {
-    constructor(element) {
-        this.element = element;
+import Component from '../Component.js';
+
+export default class ShoppingCart extends Component {
+    constructor(element, props) {
+        super(element, props);
 
         this.render();
     }
 
     render() {
+
+
         this.element.innerHTML = `
         <div>
           <h4>Shopping Cart</h4>
           <ul>
-            <li>Phone 1</li>
-            <li>Phone 2</li>
-            <li>Phone 3</li>
+            ${ this.props.items.map(item => `
+                <li>
+                    ${item}
+                    <button data-element="RemoveButton">X</button>
+                </li>
+            `).join('') }
           </ul>
         </div>
     `;
