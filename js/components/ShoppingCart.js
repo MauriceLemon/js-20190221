@@ -13,20 +13,23 @@ export default class ShoppingCart extends Component {
     }
 
     render() {
-
-
         this.element.innerHTML = `
-        <div>
-          <h4>Shopping Cart</h4>
-          <ul>
-            ${ this.props.items.map(item => `
-                <li>
-                    ${item}
-                    <button data-element="RemoveButton" data-item="${item}">X</button>
-                </li>
-            `).join('') }
-          </ul>
-        </div>
+      <div>
+        <h4>Shopping Cart</h4>
+        <ul>
+          ${ Object.keys(this.props.items).map(item => `
+          
+            <li>
+              ${item} - ${this.props.items[item]}
+              <button
+                data-element="RemoveButton"
+                data-item="${item}"
+              >X</button>
+            </li> 
+          
+          `).join('') }
+        </ul>
+      </div>
     `;
     }
 }
