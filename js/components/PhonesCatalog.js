@@ -15,6 +15,25 @@ export default class PhonesCatalog {
             const phoneId = link.dataset.phoneId;
             this.props.onPhoneSelected(phoneId);
         });
+
+        this.on('click', 'PhoneLink', (event) => {
+            const phoneId = event.delegateTarget.dataset.phoneId;
+            this.props.onPhoneSelected(phoneId);
+
+        });
+    }
+
+    on(eventName, elementName, callback) {
+        this.element.addEventListener(eventName, (event) => {
+            const delegateTarget = event.target.closest(`[data-element="${elementName}"]`)
+
+            if (!delegateTarget) {
+                return;
+            }
+
+            event.delegateTarget = delegateTarget;
+            callback(event);
+        });
     }
 
     render() {
