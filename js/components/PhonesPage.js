@@ -42,7 +42,7 @@ export default class PhonesPage extends Component {
     }
 
     removeItem(itemToRemove) {
-        const newItems = this.state.items;
+        const newItems = { ...this.state.items};
         delete newItems[itemToRemove];
 
         this.setState({
