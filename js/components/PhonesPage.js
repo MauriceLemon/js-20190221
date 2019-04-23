@@ -1,4 +1,3 @@
-
 import Component from '../Component.js';
 import PhonesCatalog from './PhonesCatalog.js';
 import PhoneViewer from './PhoneViewer.js';
@@ -12,23 +11,29 @@ export default class PhonesPage extends Component {
 
     this.state = {
       phones: [],
+      query: '',
+      order: 'name',
       selectedPhone: null,
-      items: {
-
-      },
+      items: {},
     };
 
-    this.onPhoneSelected = phoneId => this.selectedPhone(phoneId);
-    this.onAdd = phoneId => this.addItem(phoneId);
+    this.onPhoneSelected = (phoneId) => this.selectedPhone(phoneId);
+    this.onAdd = (phoneId) => this.addItem(phoneId);
     this.onBack = () => this.unselectedPhone();
-    this.onRemove = itemToRemove => this.removeItem(itemToRemove);
+    this.onRemove = (itemToRemove) => this.removeItem(itemToRemove);
 
     this.render();
 
-    getAll()
-      .then((phones) => {
-        this.setState({ phones });
-      });
+    this.loadPhones({
+      query: this.state.query,
+      order: this.state.order,
+    });
+  }
+
+  async loadPhones() {
+    const phones = await getAll();
+
+    this.setState({ phones });
   }
 
   addItem(item) {
@@ -52,7 +57,7 @@ export default class PhonesPage extends Component {
 
   selectedPhone(phoneId) {
     getById(phoneId)
-      .then((phone) => {
+      .then(phone => {
         this.setState({ selectedPhone: phone });
       });
   }
