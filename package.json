@@ -16,12 +16,13 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
-    "node-static": "^0.7.11"
+    "node-static": "^0.7.11",
+    "webpack-dev-server": "^3.3.1"
   },
   "scripts": {
     "build": "webpack",
     "lint": "eslint ./js --fix",
-    "start": "node server.js"
+    "start": "webpack-dev-server --open"
   },
   "repository": {
     "type": "git",

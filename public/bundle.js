@@ -1606,3 +1606,4 @@ module.exports = _asyncToGenerator;
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=bundle.js.map
