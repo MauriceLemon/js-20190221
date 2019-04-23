@@ -1,31 +1,28 @@
 import Component from '../Component.js';
 
 export default class PhonesCatalog extends Component {
-    constructor(element, props) {
-        super(element, props);
+  constructor(element, props) {
+    super(element, props);
 
-        this.render();
+    this.render();
 
-        this.on('click', 'PhoneLink', (event) => {
-            const phoneId = event.delegateTarget.dataset.phoneId;
-            this.props.onPhoneSelected(phoneId);
+    this.on('click', 'PhoneLink', (event) => {
+      const { phoneId } = event.delegateTarget.dataset;
+      this.props.onPhoneSelected(phoneId);
+    });
 
-        });
-
-        this.on('click', 'AddButton', (event) => {
-            const phoneId = event.delegateTarget.dataset.phoneId;
-            this.props.onAdd(phoneId);
-
-        });
-    }
+    this.on('click', 'AddButton', (event) => {
+      const { phoneId } = event.delegateTarget.dataset;
+      this.props.onAdd(phoneId);
+    });
+  }
 
 
-
-    render() {
-        this.element.innerHTML = `
+  render() {
+    this.element.innerHTML = `
         <div>
             <ul class="phones">
-              ${ this.props.phones.map(phone => `
+              ${this.props.phones.map(phone => `
               <li class="thumbnail">
                 <a 
                   data-element="PhoneLink"
@@ -60,5 +57,5 @@ export default class PhonesCatalog extends Component {
             </ul>
         </div>
     `;
-    }
+  }
 }

@@ -16,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mgrinko/js-20190221.git"
+    "url": "git+https://github.com/MauriceLemon/js-20190221.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mgrinko/js-20190221/issues"
+    "url": "https://github.com/MauriceLemon/js-20190221/issues"
   },
-  "homepage": "https://github.com/mgrinko/js-20190221#readme"
+  "homepage": "https://github.com/MauriceLemon/js-20190221#readme"
 }

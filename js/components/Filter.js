@@ -1,12 +1,12 @@
 export default class Filter {
-    constructor(element) {
-        this.element = element;
+  constructor(element) {
+    this.element = element;
 
-        this.render();
-    }
+    this.render();
+  }
 
-    render() {
-        this.element.innerHTML = `
+  render() {
+    this.element.innerHTML = `
           <div class="Filter">
               <p>
                 Search:
@@ -22,5 +22,5 @@ export default class Filter {
               </p>
           </div>
         `;
-    }
+  }
 }

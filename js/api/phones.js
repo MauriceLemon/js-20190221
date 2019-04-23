@@ -1,11 +1,17 @@
-const API_URL = 'https://mgrinko.github.io/js-20190221/api';
+const API_URL = 'https://mauricelemon.github.io/js-20190221/api';
 
-export const getAll = () => {
-    return fetch(API_URL + '/phones.json')
-        .then(response => response.json());
+export const getAll = async () => {
+  try {
+    const response = await fetch(`${API_URL}/phones.json`);
+    const data = await response.json();
+    return data;
+  } catch (e) {
+    return [];
+  }
 };
 
-export const getById = (phoneId) => {
-    return fetch(API_URL + '/phones/' + phoneId + '.json')
-        .then(response => response.json());
-};
+export const getById = (phoneId) => (
+  fetch(`${API_URL}/phones/${phoneId}.json`)
+    .then(response => response.json())
+    .catch(() => 0)
+);

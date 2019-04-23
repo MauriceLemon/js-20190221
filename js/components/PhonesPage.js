@@ -7,83 +7,83 @@ import Filter from './Filter.js';
 import { getAll, getById } from '../api/phones.js';
 
 export default class PhonesPage extends Component {
-    constructor(element, props) {
-        super(element, props);
+  constructor(element, props) {
+    super(element, props);
 
-        this.state = {
-            phones: [],
-            selectedPhone: null,
-            items: {
-                
-            },
-        };
+    this.state = {
+      phones: [],
+      selectedPhone: null,
+      items: {
 
-        this.onPhoneSelected = (phoneId) => this.selectedPhone(phoneId);
-        this.onAdd = (phoneId) => this.addItem(phoneId);
-        this.onBack = () => this.unselectedPhone();
-        this.onRemove = (itemToRemove) => this.removeItem(itemToRemove);
+      },
+    };
 
-        this.render();
+    this.onPhoneSelected = phoneId => this.selectedPhone(phoneId);
+    this.onAdd = phoneId => this.addItem(phoneId);
+    this.onBack = () => this.unselectedPhone();
+    this.onRemove = itemToRemove => this.removeItem(itemToRemove);
 
-        getAll()
-            .then(phones => {
-                this.setState({ phones: phones })
-            });
-    }
+    this.render();
 
-    addItem(item) {
-        const oldItems = this.state.items;
-        const items = {
-            ...oldItems,
-            [item]: oldItems[item] ? oldItems[item] + 1 : 1,
-        };
+    getAll()
+      .then((phones) => {
+        this.setState({ phones });
+      });
+  }
 
-        this.setState({ items: items });
-    }
+  addItem(item) {
+    const oldItems = this.state.items;
+    const items = {
+      ...oldItems,
+      [item]: oldItems[item] ? oldItems[item] + 1 : 1,
+    };
 
-    removeItem(itemToRemove) {
-        const newItems = { ...this.state.items};
-        delete newItems[itemToRemove];
+    this.setState({ items });
+  }
 
-        this.setState({
-            items: newItems
-        });
-    }
+  removeItem(itemToRemove) {
+    const newItems = { ...this.state.items };
+    delete newItems[itemToRemove];
 
-    selectedPhone(phoneId) {
-        getById(phoneId)
-            .then(phone => {
-                this.setState({ selectedPhone: phone });
-            });
-    }
+    this.setState({
+      items: newItems,
+    });
+  }
 
-    unselectedPhone() {
-        this.setState({ selectedPhone: null });
-    }
+  selectedPhone(phoneId) {
+    getById(phoneId)
+      .then((phone) => {
+        this.setState({ selectedPhone: phone });
+      });
+  }
 
-    init() {
-        this.initComponent(PhonesCatalog, {
-            phones: this.state.phones,
-            onPhoneSelected: this.onPhoneSelected,
-            onAdd: this.onAdd,
-        });
+  unselectedPhone() {
+    this.setState({ selectedPhone: null });
+  }
 
-        this.initComponent(PhoneViewer, {
-            phone: this.state.selectedPhone,
-            onBack: this.onBack,
-            onAdd: this.onAdd,
-        });
+  init() {
+    this.initComponent(PhonesCatalog, {
+      phones: this.state.phones,
+      onPhoneSelected: this.onPhoneSelected,
+      onAdd: this.onAdd,
+    });
 
-        this.initComponent(ShoppingCart, {
-            items: this.state.items,
-            onRemove: this.onRemove,
-        });
+    this.initComponent(PhoneViewer, {
+      phone: this.state.selectedPhone,
+      onBack: this.onBack,
+      onAdd: this.onAdd,
+    });
 
-        this.initComponent(Filter);
-    }
+    this.initComponent(ShoppingCart, {
+      items: this.state.items,
+      onRemove: this.onRemove,
+    });
 
-    render() {
-        this.element.innerHTML = `
+    this.initComponent(Filter);
+  }
+
+  render() {
+    this.element.innerHTML = `
       <div class="row">
         <!--Sidebar-->
         <div class="col-md-2">
@@ -98,7 +98,7 @@ export default class PhonesPage extends Component {
   
         <!--Main content-->
         <div class="col-md-10">
-          ${ this.state.selectedPhone ? `
+          ${this.state.selectedPhone ? `
             <div data-component="PhoneViewer"></div>
           ` : `
             <div data-component="PhonesCatalog"></div>
@@ -107,6 +107,6 @@ export default class PhonesPage extends Component {
       </div>
     `;
 
-        this.init();
-    }
+    this.init();
+  }
 }
