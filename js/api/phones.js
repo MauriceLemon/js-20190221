@@ -6,11 +6,17 @@ export const getAll = async ({ query, order } = {}) => {
     let phones = await response.json();
 
     if (query) {
-      phones = phones;
+      phones = phones.filter(phone => phone.name.toLowerCase().includes(query.toLowerCase()));
     }
 
-    if (order) {
-      phones = phones;
+    if (order === 'name') {
+      phones = phones.sort((a, b) => {
+        const nameA = a.name.toLowerCase();
+        const nameB = b.name.toLowerCase();
+        return (nameA < nameB) ? -1 : 1;
+      });
+    } else if (order === 'age') {
+      phones = phones.sort((a, b) => a.age - b.age);
     }
 
     return phones;
