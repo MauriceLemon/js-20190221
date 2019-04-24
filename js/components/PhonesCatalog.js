@@ -17,7 +17,6 @@ export default class PhonesCatalog extends Component {
     });
   }
 
-
   render() {
     this.element.innerHTML = `
         <div>
