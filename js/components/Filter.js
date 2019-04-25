@@ -6,7 +6,7 @@ export default class Filter extends Component {
 
     this.render();
 
-    this.on('input', 'Search', (event) => {
+    this.onDebounce('input', 'Search', (event) => {
       const inputValue = event.delegateTarget.value;
       this.props.onSearch(inputValue);
     });

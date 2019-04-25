@@ -68,12 +68,12 @@ export default class PhonesPage extends Component {
   }
 
   async search(inputValue) {
-    // this.setState({ query: inputValue })
+    // this.setState({ query: inputValue });
     await this.loadPhones({ query: inputValue });
   }
 
   async order(value) {
-    // this.setState({ order: value })
+    // this.setState({ order: value });
     await this.loadPhones({ order: value });
   }
 
