@@ -32,6 +32,36 @@ export default class Component {
     });
   }
 
+  onDebounce(eventName, elementName, callback) {
+    function debounce(f, delay) {
+      let timerId;
+
+      return function wrapper(...args) {
+        clearTimeout(timerId);
+
+        timerId = setTimeout(() => {
+          f(...args);
+        }, delay);
+      };
+    }
+
+    function onChange(event) {
+      const delegateTarget = event.target.closest(
+        `[data-element="${elementName}"]`,
+      );
+
+      if (!delegateTarget) {
+        return;
+      }
+      // eslint-disable-next-line no-param-reassign
+      event.delegateTarget = delegateTarget;
+      console.log(event.target.value);
+      callback(event);
+    }
+
+    this.element.addEventListener('input', debounce(onChange, 500));
+  }
+
   initComponent(Constructor, props = {}) {
     const componentName = Constructor.name;
     const element = this.element.querySelector(`[data-component="${componentName}"]`);

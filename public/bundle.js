@@ -1387,6 +1387,38 @@ function () {
       });
     }
   }, {
+    key: "onDebounce",
+    value: function onDebounce(eventName, elementName, callback) {
+      function debounce(f, delay) {
+        var timerId;
+        return function wrapper() {
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          clearTimeout(timerId);
+          timerId = setTimeout(function () {
+            f.apply(void 0, args);
+          }, delay);
+        };
+      }
+
+      function onChange(event) {
+        var delegateTarget = event.target.closest("[data-element=\"".concat(elementName, "\"]"));
+
+        if (!delegateTarget) {
+          return;
+        } // eslint-disable-next-line no-param-reassign
+
+
+        event.delegateTarget = delegateTarget;
+        console.log(event.target.value);
+        callback(event);
+      }
+
+      this.element.addEventListener('input', debounce(onChange, 500));
+    }
+  }, {
     key: "initComponent",
     value: function initComponent(Constructor) {
       var props = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
@@ -1659,7 +1691,7 @@ function (_Component) {
 
     _this.render();
 
-    _this.on('input', 'Search', function (event) {
+    _this.onDebounce('input', 'Search', function (event) {
       var inputValue = event.delegateTarget.value;
 
       _this.props.onSearch(inputValue);
