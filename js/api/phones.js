@@ -1,4 +1,4 @@
-const API_URL = 'https://mauricelemon.github.io/js-20190221/api';
+const API_URL = 'https://msemionova.github.io/js-20190221/api';
 
 export const getAll = async ({ query, order } = {}) => {
   try {
