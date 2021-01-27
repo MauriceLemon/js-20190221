@@ -1732,7 +1732,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var API_URL = 'https://mauricelemon.github.io/js-20190221/api';
+var API_URL = 'https://msemionova.github.io/js-20190221/api';
 var getAll =
 /*#__PURE__*/
 function () {
